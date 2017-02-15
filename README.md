@@ -11,8 +11,9 @@ with custom dependencies in minutes.
 > standalone `.jar` build (embedded Tomcat 8.5+) in addition to the standard `.war` file and
 > offer support for [Spring boot](https://projects.spring.io/spring-boot/) for additional customizations.
 > Those features comes with a cost in term of dependencies size (overhead of 11Mb comparing to barebone phpjavabridge) although no
-> speed differences have been measured between both bundles. Also be aware that this starter does not register
-> by default the PHPCGIServlet and thus does not require a php-cgi installation in order to run (an common issue
+> speed differences have been measured between both bundles. 
+>
+> Be aware that this starter does not register the PHPCGIServlet by default and thus does not require a php-cgi installation in order to run (an common issue
 > when installing the bridge). While most use cases does not requires it (Java->PHP), its activation is possible, see the FAQ.     
     
 ## Requirements
@@ -26,6 +27,7 @@ with custom dependencies in minutes.
 - [x] Compatible with the [soluble-japha](https://github.com/belgattitude/soluble-japha) client.
 - [x] Based on [spring boot](https://projects.spring.io/spring-boot/) with thymeleaf architecture. 
 - [x] Gradle [init-scripts](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/README.md) examples for managing dependencies (jasperreports, poi, corenlp...). 
+- [x] By default, does not require a `php-cgi` present (see the FAQ about PHPCGIServlet)
 - [x] Dashboard landing page with json monitoring address.  
 - [x] Build easily manageable from the command line (gradle and init-scripts).
 - [x] Provides a standalone `.jar` with an embedded tomcat (in addition to standard .war file).
