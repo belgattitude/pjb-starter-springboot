@@ -25,8 +25,69 @@ with custom dependencies in minutes.
 - [x] Dashboard landing page with json monitoring address.  
 - [x] Build easily manageable from the command line (gradle and init-scripts).
 - [x] Provides a standalone `.jar` with an embedded tomcat (in addition to standard .war file).
+
+## Quick start
+
+Packaging and deploying a customized PHPJavaBridge server could be done in 5 steps:
+    
+    1. Clone the project
+
+        ```shell
+        $ git clone https://github.com/belgattitude/pjb-starter-springboot
+        $ cd pjb-starter-springboot
+        ```
+        
+    2. Build the `.war` and `.jar` files 
+    
+        Example of build with jasperreports and mysql jdbc connector. See the '-I' parameter in the command below.
+        
+        Refer to the [init-scripts](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/README.md)
+        doc for other recipes. 
+    
+        ```shell        
+        $ ./gradlew build -I init-scripts/init.jasperreports.gradle -I init-scripts/init.mysql.gradle
+        ```
+
+        Your builded files are saved in the `build/libs` 
    
-## 1. Usage
+        ```shell
+        $ ls -la build/libs
+        ```
+    
+    4. Run standalone server `.jar` from the command line (optional)
+    
+        ```shell
+        $ java -jar ./build/libs/JavaBridgeStandalone.jar -Dserver_port=8090
+        ```
+   
+        Open your browser and check the landing page located at [http://localhost:8090](http://localhost:8090).
+    
+    5. Alternatively deploy the `.war` on Tomcat (when not using standalone)
+    
+        > Tomcat deployment is the preferred way over the standalone `.jar` mode for production. While the standalone
+        > is also running under tomcat (embedded tomcat 8.5+), the Tomcat provided with your OS is a better choice
+        > regarding standard location of log files as well as boot startup integration.   
+          
+        ```shell
+        cp ./build/libs/JavaBridgeTemplate.war /var/lib/tomcat8/webapps/MyJavaBridge.war
+        ```        
+        
+        Wait few seconds and point your browser to [http://localhost:8080/MyJavaBridge](http://localhost:8080/MyJavaBridge).
+              
+        > Note that the URI `/MyJavaBridge/` correspond to the war filename... feel free to adapt to your own needs. To re-deploy
+        > (deploy an updated version), simply copy the new `.war` file, Tocmat will apply the changes automatically. 
+    
+
+The landing page will display:
+
+![](./docs/images/browser-home.png "Homepage screenshot")             
+
+See the [soluble-japha](https://github.com/belgattitude/soluble-japha) client for writing Java from PHP.
+ 
+         
+## Documentation
+
+### 1. Get the project
 
 Clone the project 
  
@@ -38,7 +99,7 @@ $ git clone https://github.com/belgattitude/pjb-starter-springboot/
 > refer it in the clone command instead of the main project.  
 
 
-### 1.1 Build
+### 2. Build
 
 Call the `build` gradle task: 
 
@@ -55,18 +116,20 @@ And check the `build\libs` directory for the following files:
 
 > Approx. size is given as a reference of the current default build. 
 
-### 1.2 Run from gradle (development)
+### 3. Run the PHPJavaBridge server.
+ 
+The following example use `bootRun` task to run the server. Choose Tomcat deployment or the
+standalone mode for production.
 
 ```shell
 $ ./gradlew bootRun 
 # or specify the port with gradle bootRun -Dserver.port=8090
 ```
 
-And point your browser to [http://localhost:8090](http://localhost:8090), you should see
+And point your browser to [http://localhost:8090](http://localhost:8090).
 
-![](./docs/images/browser-home.png "Homepage screenshot")
 
-## 2. How to connect from PHP
+### 4. Connect from PHP
 
 Create a php project in a directory of your choice and install the [soluble-japha](https://github.com/belgattitude/soluble-japha) client.
 
@@ -93,7 +156,41 @@ echo  $system->getProperties()->get('java.vm_name');
 
 ```
 
-## 3. How to customize
+### 5. How to distribute, run or deploy
+
+> **WARNING** The phpjavabridge server is not supposed to be run on a public facing server
+> and its use should be limited to interactions on the same host/network with the php client.
+> Do not run it as root neither as it exposes the JVM methods through the network. 
+> In its default configuration the pjb⁻starter example does not provide any security mechanisms
+> so any url with an extension of '*.phpjavabridge' could be remotely exploited.      
+
+#### 5.1 Standalone (embedded tomcat8)
+
+To run simply
+
+```shell
+$ java -jar ./build/libs/JavaBridgeStandalone.jar -Dserver_port=8090 
+```
+And point your browser to [http://localhost:8090](http://localhost:8090) to check.
+
+
+#### 5.2 Deploy on Tomcat 7/8
+
+Copy to the Tomcat webapp directory to deploy: 
+
+```shell
+cp ./build/libs/JavaBridgeTemplate.war /var/lib/tomcat8/webapps/MyJavaBridge.war
+```
+
+wait few seconds and point your browser to [http://localhost:8080/MyJavaBridge](http://localhost:8080/MyJavaBridge).
+
+> Note that the port may vary and the URI *(or server context)* is taken from the deployed filename. 
+> In this example: 'MyJavaBridge', feel free to change.  
+
+Repeat operation whenever you need to (re-)deploy.
+
+
+### 6. Advanced customizations
 
 Have a look a those files:
 
@@ -110,40 +207,45 @@ Modify for your usage and rebuild with `grade bootRun` to check.
 dependencies in the 'templates' and 'static' subdir in [resources](https://github.com/belgattitude/pjb-starter-springboot/tree/master/src/main/resources) folder.*  
 
 
-## 4. How to distribute, run or deploy
 
-> **WARNING** The phpjavabridge server is not supposed to be run on a public facing server
-> and its use should be limited to interactions on the same host/network with the php client.
-> Do not run it as root neither as it exposes the JVM methods through the network. 
-> In its default configuration the pjb⁻starter example does not provide any security mechanisms
-> so any url with an extension of '*.phpjavabridge' could be remotely exploited.      
+## Faq
 
-### 4.1 Standalone (embedded tomcat8)
+### OutOfMemory errors ?
 
-To run simply
+With the self-contained tomcat
 
 ```shell
-$ java -jar ./build/libs/JavaBridgeStandalone.jar -Dserver_port=8090 
+> export JAVA_OPTS=-Xmx512m -XX:MaxPermSize=128M
 ```
-And point your browser to [http://localhost:8090](http://localhost:8090) to check.
-
-
-### 4.2 Deploy on Tomcat 7/8
-
-Copy to the Tomcat webapp directory to deploy: 
+If deployed on Tomcat
 
 ```shell
-cp ./build/libs/JavaBridgeTemplate.war /var/lib/tomcat8/webapps/MyJavaBridge.war
+$ vi /etc/default/tomcat8
 ```
 
-wait few seconds and point your browser to [http://localhost:8080/MyJavaBridge](http://localhost:8080/MyJavaBridge).
+Look for the Xmx default at 128m and increase 
 
-> Note that the port may vary and the URI *(or server context)* is taken from the deplyed filename. 
-> In this example: 'MyJavaBridge', feel free to change.  
+```
+JAVA_OPTS="-Djava.awt.headless=true -Xmx512m -XX:+UseConcMarkSweepGC"
+```
 
-Repeat operation whenever you need to (re-)deploy.
+and restart
 
-## 5. Faq
+```shell
+sudo service tomcat8 restart
+```
+
+### How can I monitor that the bridge runs ?
+
+The `pjb-starter-springboot` includes a very basic [PingController]((https://github.com/belgattitude/pjb-starter-springboot/blob/master/src/main/java/io/soluble/pssb/mvc/PingController.java)), you can call it on [http://localhost:8090/ping.json](http://localhost:8090/ping.json), you should see
+
+```json
+{
+    "date": 1484919571831,
+    "success": true,
+    "message": "PHPJavaBridge running"
+}
+```
 
 ### How to add libraries to the builded war (jar) ?
 
@@ -217,42 +319,16 @@ Repeat operation whenever you need to (re-)deploy.
 
 If you use the Tomcat deployment it should start by default. With the self-container tomcat, ask google for "supervisord spring boot".
 
-### OutOfMemory errors ?
+### BootRun support
 
-With the self-contained tomcat
-
-```shell
-> export JAVA_OPTS=-Xmx512m -XX:MaxPermSize=128M
-```
-If deployed on Tomcat
+BootRun task is really useful when developping and allows hot reloading when you customize css, html pages...
 
 ```shell
-$ vi /etc/default/tomcat8
+$ ./gradlew bootRun 
+# or specify the port with gradle bootRun -Dserver.port=8090
 ```
 
-Look for the Xmx default at 128m and increase 
-
-```
-JAVA_OPTS="-Djava.awt.headless=true -Xmx512m -XX:+UseConcMarkSweepGC"
-```
-
-and restart
-
-```shell
-sudo service tomcat8 restart
-```
-
-### How can I monitor that the bridge runs ?
-
-The `pjb-starter-springboot` includes a very basic [PingController]((https://github.com/belgattitude/pjb-starter-springboot/blob/master/src/main/java/io/soluble/pssb/mvc/PingController.java)), you can call it on [http://localhost:8090/ping.json](http://localhost:8090/ping.json), you should see
-
-```json
-{
-    "date": 1484919571831,
-    "success": true,
-    "message": "PHPJavaBridge running"
-}
-```
+And point your browser to [http://localhost:8090](http://localhost:8090).
 
 
 ### How to enable the `Java->PHP` feature ? 
