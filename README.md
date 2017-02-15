@@ -3,20 +3,28 @@
 
 Skeleton to set up a customized [PHPJavaBridge server](https://github.com/belgattitude/php-java-bridge)
 based on [Spring boot](https://projects.spring.io/spring-boot/) in minutes. 
- 
+
+> While both the recent [PHPJavaBridge server](https://github.com/belgattitude/php-java-bridge) fork and 
+> this starter can be easily customized (in pretty much the same way), the latter features a 
+> standalone `.jar` build (embedded Tomcat 8.5+) in addition to the standard `.war` file and
+> offer support for spring boot.
+> Those features comes with a cost in term of dependencies size (overhead of 11Mb comparing to barebone phpjavabridge) although no
+> speed differences have been measured between both bundles.    
+   
 *Note: A PHPJavaBridge server is required for interactions between PHP and Java through the [soluble-japha](https://github.com/belgattitude/soluble-japha) client.* 
  
 ## Requirements
 
 - Java JDK 8, see [docs/install_java.md](./docs/install_java.md)
-- Optionally [Tomcat](./docs/install_tomcat.md) when not using standalone (preferred).
+- Optionally [Tomcat](./docs/install_tomcat.md) when not using standalone.
 
 ## Features
 
-- [x] [Spring boot](https://projects.spring.io/spring-boot/) with thymeleaf support. 
+- [x] Recent soluble [PHPJavaBridge server](https://github.com/belgattitude/php-java-bridge) servlet registered.
+- [x] Based on [spring boot](https://projects.spring.io/spring-boot/) with thymeleaf architecture. 
 - [x] [Gradle init-scripts](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/README.md) examples for managing dependencies (jasperreports, poi, corenlp...). 
 - [x] Dashboard landing page with json monitoring address.  
-- [x] Standalone .jar with an embedded tomcat (in addition to standard .war file).
+- [x] Standalone `.jar` with an embedded tomcat (in addition to standard .war file).
    
 ## 1. Usage
 

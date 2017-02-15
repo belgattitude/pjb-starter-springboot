@@ -123,11 +123,6 @@ runPHPUnit()  {
     echo "[*] Running phpunit"
     cp ../phpunit.travis.xml .
     ./vendor/bin/phpunit -c ./phpunit.travis.xml
-    echo $?
-
-    # Kill standalone
-    kill `cat $VAR_DIR/standalone.pid`
-
 }
 
 # Here's the steps
@@ -135,3 +130,6 @@ runPHPUnit()  {
 install_soluble_japha;
 runStandaloneInBackground;
 runPHPUnit;
+# Kill standalone
+kill `cat $VAR_DIR/standalone.pid`
+
