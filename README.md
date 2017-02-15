@@ -1,36 +1,22 @@
 [![Build Status](https://travis-ci.org/belgattitude/pjb-starter-springboot.svg?branch=master)](https://travis-ci.org/belgattitude/pjb-starter-springboot)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-
-Skeleton to set up and customize a [PHPJavaBridge server](https://github.com/belgattitude/php-java-bridge)
-based on [Spring boot](https://projects.spring.io/spring-boot/). 
-
-See also [soluble-japha](https://github.com/belgattitude/soluble-japha) for PHP client. 
-
+Skeleton to set up a customized [PHPJavaBridge server](https://github.com/belgattitude/php-java-bridge)
+based on [Spring boot](https://projects.spring.io/spring-boot/) in minutes. 
+ 
+*Note: A PHPJavaBridge server is required for interactions between PHP and Java through the [soluble-japha](https://github.com/belgattitude/soluble-japha) client.* 
+ 
 ## Requirements
 
 - Java JDK 8, see [docs/install_java.md](./docs/install_java.md)
-- Optionally [Tomcat](./docs/install_tomcat.md) 
+- Optionally [Tomcat](./docs/install_tomcat.md) when not using standalone (preferred).
 
 ## Features
 
-Based on [Spring boot](https://projects.spring.io/spring-boot/), the `pjb-starter-springboot` can
-be easily configured or customized to build, run and deploy PHPJavabridge instances. It can also
-be used as an example for embedding the PHPJavaBridge in your application.  
-
-- [x] Modernized `JavaBridgeTemplate.jar` example
-  - [x] JDK8, spring boot, thymeleaf.
-  - [x] JavaBridgeServlet registered `PHP->Java`- (from php use the [soluble-japha](https://github.com/belgattitude/soluble-japha) client.
-  - [x] PhpCGIServlet registration example `Java->PHP` (disabled by default, doc exists)        
-  - [ ] Original PhpJavaBridge config properties in the original web.xml (like location of the php-cgi executable...)        
-- [x] Service landing page 
-  - [x] Refactored welcome landing page.
-  - [x] *Ping* address for monitoring.
-  - [ ] Display server/java infos
-- [ ] Documentation 
-  - [x] How to customize (WIP)
-  - [ ] Basic security recipes, incl. bind on localhost
-  - [ ] Document how to add local jar deps (out of maven)
+- [x] [Spring boot](https://projects.spring.io/spring-boot/) with thymeleaf support. 
+- [x] [Gradle init-scripts](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/README.md) examples for managing dependencies (jasperreports, poi, corenlp...). 
+- [x] Dashboard landing page with json monitoring address.  
+- [x] Standalone .jar with an embedded tomcat (in addition to standard .war file).
    
 ## 1. Usage
 
@@ -357,12 +343,25 @@ $ java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n \
        -jar ./build/libs/JavaBridgeStandalone.jar
 ```
 
+## Status
+- [x] Modernized `JavaBridgeTemplate.jar` example
+  - [x] JDK8, spring boot, thymeleaf.
+  - [x] JavaBridgeServlet registered `PHP->Java`- (from php use the [soluble-japha](https://github.com/belgattitude/soluble-japha) client.
+  - [x] PhpCGIServlet registration example `Java->PHP` (disabled by default, doc exists)        
+  - [ ] Original PhpJavaBridge config properties in the original web.xml (like location of the php-cgi executable...)        
+- [x] Service landing page 
+  - [x] Refactored welcome landing page.
+  - [x] *Ping* address for monitoring.
+  - [ ] Display server/java infos
+- [ ] Documentation 
+  - [x] How to customize (WIP)
+  - [ ] Basic security recipes, incl. bind on localhost
+  - [ ] Document how to add local jar deps (out of maven)
 
 
 ## Contribute
 
 Feel free to fork and submit pull requests.
-
 
 
 ## Credits

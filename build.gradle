@@ -140,7 +140,6 @@ task "fullBuild" {
     dependsOn "cleanTest", "test", "check", "build"
 }
 
-
 jar {
     baseName = "${jar_name}"
     version = null
@@ -158,5 +157,5 @@ bootRepackage {
     withJarTask jar
 }
 
-defaultTasks 'war'
+defaultTasks 'war', 'jar', 'bootRepackage'
 
