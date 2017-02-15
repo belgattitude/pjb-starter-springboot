@@ -11,7 +11,9 @@ with custom dependencies in minutes.
 > standalone `.jar` build (embedded Tomcat 8.5+) in addition to the standard `.war` file and
 > offer support for [Spring boot](https://projects.spring.io/spring-boot/) for additional customizations.
 > Those features comes with a cost in term of dependencies size (overhead of 11Mb comparing to barebone phpjavabridge) although no
-> speed differences have been measured between both bundles.     
+> speed differences have been measured between both bundles. Also be aware that this starter does not register
+> by default the PHPCGIServlet and thus does not require a php-cgi installation in order to run (an common issue
+> when installing the bridge). While most user cases does not requires it (Java->PHP), see the FAQ for enabing it.     
     
 ## Requirements
 
