@@ -150,7 +150,7 @@ $ba = new BridgeAdapter([
 ]);
 
 $system = $ba->javaClass('java.lang.System');
-echo  $system->getProperties()->get('java.vm_name');
+echo $system->getProperties()->get('java.vm_name');
 
 ```
 
