@@ -1,18 +1,16 @@
 [![Build Status](https://travis-ci.org/belgattitude/pjb-starter-springboot.svg?branch=master)](https://travis-ci.org/belgattitude/pjb-starter-springboot)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Skeleton to set up a customized [PHPJavaBridge server](https://github.com/belgattitude/php-java-bridge)
-based on [Spring boot](https://projects.spring.io/spring-boot/) in minutes. 
+Easy starter to package a [PHPJavaBridge](https://github.com/belgattitude/php-java-bridge) server 
+with custom dependencies in minutes.    
 
 > While both the recent [PHPJavaBridge server](https://github.com/belgattitude/php-java-bridge) fork and 
 > this starter can be easily customized (in pretty much the same way), the latter features a 
 > standalone `.jar` build (embedded Tomcat 8.5+) in addition to the standard `.war` file and
-> offer support for spring boot.
+> offer support for [Spring boot](https://projects.spring.io/spring-boot/) for additional customizations.
 > Those features comes with a cost in term of dependencies size (overhead of 11Mb comparing to barebone phpjavabridge) although no
-> speed differences have been measured between both bundles.    
-   
-*Note: A PHPJavaBridge server is required for interactions between PHP and Java through the [soluble-japha](https://github.com/belgattitude/soluble-japha) client.* 
- 
+> speed differences have been measured between both bundles.     
+    
 ## Requirements
 
 - Java JDK 8, see [docs/install_java.md](./docs/install_java.md)
@@ -20,11 +18,13 @@ based on [Spring boot](https://projects.spring.io/spring-boot/) in minutes.
 
 ## Features
 
-- [x] Recent soluble [PHPJavaBridge server](https://github.com/belgattitude/php-java-bridge) servlet registered.
+- [x] Recent soluble [PHPJavaBridge](https://github.com/belgattitude/php-java-bridge) servlet registered.
+- [x] Compatible with the [soluble-japha](https://github.com/belgattitude/soluble-japha) client.
 - [x] Based on [spring boot](https://projects.spring.io/spring-boot/) with thymeleaf architecture. 
-- [x] [Gradle init-scripts](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/README.md) examples for managing dependencies (jasperreports, poi, corenlp...). 
+- [x] Gradle [init-scripts](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/README.md) examples for managing dependencies (jasperreports, poi, corenlp...). 
 - [x] Dashboard landing page with json monitoring address.  
-- [x] Standalone `.jar` with an embedded tomcat (in addition to standard .war file).
+- [x] Build easily manageable from the command line (gradle and init-scripts).
+- [x] Provides a standalone `.jar` with an embedded tomcat (in addition to standard .war file).
    
 ## 1. Usage
 
@@ -34,10 +34,8 @@ Clone the project
 $ git clone https://github.com/belgattitude/pjb-starter-springboot/ 
 ```
 
-> If you intend customize or contribute, make your [own fork](https://guides.github.com/activities/forking/) first and
-> clone it instead of the main project. 
-
-> If you want to skip the build process refer to the [release page](https://github.com/belgattitude/pjb-starter-springboot/releases) for pre-built binaries.
+> If you intend contribute or want to keep a track of changes, consider making your [own fork](https://guides.github.com/activities/forking/) first and
+> refer it in the clone command instead of the main project.  
 
 
 ### 1.1 Build
