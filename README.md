@@ -4,6 +4,8 @@
 Easy starter to package a [PHPJavaBridge](https://github.com/belgattitude/php-java-bridge) server 
 with custom dependencies in minutes.    
 
+![](./docs/images/browser-home.png "Homepage screenshot")
+
 > While both the recent [PHPJavaBridge server](https://github.com/belgattitude/php-java-bridge) fork and 
 > this starter can be easily customized (in pretty much the same way), the latter features a 
 > standalone `.jar` build (embedded Tomcat 8.5+) in addition to the standard `.war` file and
@@ -76,12 +78,6 @@ Packaging and deploying a customized PHPJavaBridge server could be done in 4 ste
    Note that the URI `/MyJavaBridge/` correspond to the war filename... feel free to adapt to your own needs. To re-deploy
    (deploy an updated version), simply copy the new `.war` file, Tocmat will apply the changes automatically. 
     
-
-With both standalone and tomcat mode, the landing page should correspond to: 
-
-![](./docs/images/browser-home.png "Homepage screenshot")             
-
-See the [soluble-japha](https://github.com/belgattitude/soluble-japha) client for writing Java from PHP.
  
          
 ## Documentation
