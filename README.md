@@ -32,50 +32,50 @@ Packaging and deploying a customized PHPJavaBridge server could be done in 5 ste
     
     1. Clone the project
 
-        ```shell
-        $ git clone https://github.com/belgattitude/pjb-starter-springboot
-        $ cd pjb-starter-springboot
-        ```
+       ```shell
+       $ git clone https://github.com/belgattitude/pjb-starter-springboot
+       $ cd pjb-starter-springboot
+       ```
         
     2. Build the `.war` and `.jar` files 
     
-        Example of build with jasperreports and mysql jdbc connector. See the '-I' parameter in the command below.
+       Example of build with jasperreports and mysql jdbc connector. See the '-I' parameter in the command below.
         
-        Refer to the [init-scripts](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/README.md)
-        doc for other recipes. 
+       Refer to the [init-scripts](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/README.md)
+       doc for other recipes. 
     
-        ```shell        
-        $ ./gradlew build -I init-scripts/init.jasperreports.gradle -I init-scripts/init.mysql.gradle
-        ```
+       ```shell        
+       $ ./gradlew build -I init-scripts/init.jasperreports.gradle -I init-scripts/init.mysql.gradle
+       ```
 
-        Your builded files are saved in the `build/libs` 
+       Your builded files are saved in the `build/libs` 
    
-        ```shell
-        $ ls -la build/libs
-        ```
+       ```shell
+       $ ls -la build/libs
+       ```
     
     4. Run standalone server `.jar` from the command line (optional)
     
-        ```shell
-        $ java -jar ./build/libs/JavaBridgeStandalone.jar -Dserver_port=8090
-        ```
+       ```shell
+       $ java -jar ./build/libs/JavaBridgeStandalone.jar -Dserver_port=8090
+       ```
    
-        Open your browser and check the landing page located at [http://localhost:8090](http://localhost:8090).
+       Open your browser and check the landing page located at [http://localhost:8090](http://localhost:8090).
     
     5. Alternatively deploy the `.war` on Tomcat (when not using standalone)
     
-        > Tomcat deployment is the preferred way over the standalone `.jar` mode for production. While the standalone
-        > is also running under tomcat (embedded tomcat 8.5+), the Tomcat provided with your OS is a better choice
-        > regarding standard location of log files as well as boot startup integration.   
+       > Tomcat deployment is the preferred way over the standalone `.jar` mode for production. While the standalone
+       > is also running under tomcat (embedded tomcat 8.5+), the Tomcat provided with your OS is a better choice
+       > regarding standard location of log files as well as boot startup integration.   
           
-        ```shell
-        cp ./build/libs/JavaBridgeTemplate.war /var/lib/tomcat8/webapps/MyJavaBridge.war
-        ```        
+       ```shell
+       cp ./build/libs/JavaBridgeTemplate.war /var/lib/tomcat8/webapps/MyJavaBridge.war
+       ```        
         
-        Wait few seconds and point your browser to [http://localhost:8080/MyJavaBridge](http://localhost:8080/MyJavaBridge).
+       Wait few seconds and point your browser to [http://localhost:8080/MyJavaBridge](http://localhost:8080/MyJavaBridge).
               
-        > Note that the URI `/MyJavaBridge/` correspond to the war filename... feel free to adapt to your own needs. To re-deploy
-        > (deploy an updated version), simply copy the new `.war` file, Tocmat will apply the changes automatically. 
+       Note that the URI `/MyJavaBridge/` correspond to the war filename... feel free to adapt to your own needs. To re-deploy
+       (deploy an updated version), simply copy the new `.war` file, Tocmat will apply the changes automatically. 
     
 
 The landing page will display:
