@@ -13,7 +13,7 @@ with custom dependencies in minutes.
 > Those features comes with a cost in term of dependencies size (overhead of 11Mb comparing to barebone phpjavabridge) although no
 > speed differences have been measured between both bundles. 
 >
-> Be aware that this starter does not register the PHPCGIServlet by default and thus does not require a php-cgi installation in order to run (an common issue
+> Be aware that this starter does not register the PHPCGIServlet by default and thus does not require a php-cgi installation in order to run (a common issue
 > when installing the bridge). While most use cases does not requires it (Java->PHP), its activation is possible, see the FAQ.     
     
 ## Requirements
