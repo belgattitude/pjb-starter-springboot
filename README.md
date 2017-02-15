@@ -28,7 +28,7 @@ with custom dependencies in minutes.
 
 ## Quick start
 
-Packaging and deploying a customized PHPJavaBridge server could be done in 5 steps:
+Packaging and deploying a customized PHPJavaBridge server could be done in 4 steps:
     
 1. Clone the project
 
@@ -40,10 +40,9 @@ Packaging and deploying a customized PHPJavaBridge server could be done in 5 ste
 2. Build the `.war` and `.jar` files 
     
    Example of build with jasperreports and mysql jdbc connector. See the '-I' parameter in the command below.
-    
    Refer to the [init-scripts](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/README.md)
    doc for other recipes. 
-
+    
    ```shell        
    $ ./gradlew build -I init-scripts/init.jasperreports.gradle -I init-scripts/init.mysql.gradle
    ```
@@ -54,7 +53,7 @@ Packaging and deploying a customized PHPJavaBridge server could be done in 5 ste
    $ ls -la build/libs
    ```
     
-4. Run standalone server `.jar` from the command line (optional, skip to 5 for tomcat deployment)
+3. Run standalone server `.jar` from the command line (optional, skip to 4 for tomcat deployment)
 
    ```shell
    $ java -jar ./build/libs/JavaBridgeStandalone.jar -Dserver_port=8090
@@ -62,7 +61,7 @@ Packaging and deploying a customized PHPJavaBridge server could be done in 5 ste
 
    Open your browser and check the landing page located at [http://localhost:8090](http://localhost:8090).
     
-5. Alternatively deploy the `.war` on Tomcat (when not using standalone)
+4. Alternatively deploy the `.war` on Tomcat (when not using standalone)
     
    > Tomcat deployment is the preferred way over the standalone `.jar` mode for production. While the standalone
    > is also running under tomcat (embedded tomcat 8.5+), the Tomcat provided with your OS is a better choice
@@ -78,7 +77,7 @@ Packaging and deploying a customized PHPJavaBridge server could be done in 5 ste
    (deploy an updated version), simply copy the new `.war` file, Tocmat will apply the changes automatically. 
     
 
-The landing page will display:
+With both standalone and tomcat mode, the landing page should correspond to: 
 
 ![](./docs/images/browser-home.png "Homepage screenshot")             
 
