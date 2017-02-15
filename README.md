@@ -75,8 +75,8 @@ Packaging and deploying a customized PHPJavaBridge server could be done in 4 ste
     
    Wait few seconds and point your browser to [http://localhost:8080/MyJavaBridge](http://localhost:8080/MyJavaBridge).
           
-   Note that the URI `/MyJavaBridge/` correspond to the war filename... feel free to adapt to your own needs. To re-deploy
-   (deploy an updated version), simply copy the new `.war` file, Tocmat will apply the changes automatically. 
+   Note that the `/MyJavaBridge/` URI corresponds to the war filename as copied in the webapps folder... feel free to adapt to your own needs. To re-deploy
+   (deploy an updated version), simply copy the new `.war` file, Tomcat will apply the changes automatically. 
     
 
 Don't forget to read the full documentation below, especially **security considerations** when exposing the PHPJavaBridge server
