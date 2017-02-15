@@ -5,15 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 
-## 0.4.0 (UNRELEASED) 
+## 0.4.0 (2017-02-15) 
 
 ### Changed
 
   - Namespace changed to `io.soluble.pssb` (pssb = pjb starter spring boot)
+  - Updated to `io.soluble.pjb:php-java-bridge:6.2.11-rc-2`
 
 ### Added
 
-  - Documenation examples for adding java libs from gradle `init-script` method.
+  - Documentation examples for adding java libs from gradle `init-script` method.
+
 
 # Releases from older pjb-starter-gradle (older name)
 
