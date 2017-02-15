@@ -53,11 +53,7 @@ Packaging and deploying a customized PHPJavaBridge server could be done in 4 ste
    $ ./gradlew build -I init-scripts/init.jasperreports.gradle -I init-scripts/init.mysql.gradle
    ```
 
-   Your builded files are saved in the `build/libs` 
-
-   ```shell
-   $ ls -la build/libs
-   ```
+   Your builded files are saved in the `build/libs`, type `ls -la build/libs` to list them. 
     
 3. Run standalone server `.jar` from the command line (optional, skip to 4 for tomcat deployment)
 
@@ -83,7 +79,7 @@ Packaging and deploying a customized PHPJavaBridge server could be done in 4 ste
    (deploy an updated version), simply copy the new `.war` file, Tocmat will apply the changes automatically. 
     
 
-Don't forget to read the full documentation below, especially security considerations when exposing the PHPJavaBridge server
+Don't forget to read the full documentation below, especially **security considerations** when exposing the PHPJavaBridge server
 to the outside world, some common issues with memory in the FAQ and read the [soluble-japha](https://github.com/belgattitude/soluble-japha) doc
 for PHP/Java interactions. 
          
@@ -256,11 +252,11 @@ The `pjb-starter-springboot` includes a very basic [PingController]((https://git
 > The latter is preferred if you prefer to keep the `build.gradle` file intact.
  
 
-1. Alternative 1: Use the init-script method.
+1. Preferred method: Use the init-script method.
 
     Have a look to the [init-script method](https://github.com/belgattitude/pjb-starter-springboot/tree/master/init-scripts) documentation. 
 
-2. Alternative 2: Modify the `build.gradle` file:
+2. Alternative method: Modify the `build.gradle` file:
     Just open the [build.gradle](./build.gradle) and
     check the runtime (or compile) sections.
     
