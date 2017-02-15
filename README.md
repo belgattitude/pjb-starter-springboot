@@ -109,7 +109,7 @@ And check the `build\libs` directory for the following files:
 
 | File          | Description   | Approx. size |
 | ------------- | ------------- | ------------ |
-| `JavaBridgeStandalone.jar`  | Standalone server with an embedded tomcat. | +/- 32Mb |
+| `JavaBridgeStandalone.jar`  | Standalone server with an embedded Tomcat 8.5+. | +/- 32Mb |
 | `JavaBridgeTemplate.war`    | War file, ready to drop into Tomcat webapps folder. | +/- 12Mb |
 
 > Approx. size is given as a reference of the current default build. 
