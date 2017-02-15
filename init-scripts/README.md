@@ -20,7 +20,7 @@ As an example, you can call the `war` task to generate a build with both `jasper
 $ ./gradlew war -I init-scripts/init.jasperreports.gradle -I init-scripts/init.mysql.gradle
 ```
 
-The newly builder war file present in the `build/libs` folder will now contains your dependencies
+The newly builded war file present in the `build/libs` folder will now contains your dependencies
 in its `WEB-INF/lib` internal directory.
 
 ### Provided example init scripts
