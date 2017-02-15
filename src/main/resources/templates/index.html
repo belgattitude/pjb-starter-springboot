@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="pjb-gradle-startup." />
+    <title>PHPJavaBridge landing page</title>
+
+    <link rel="stylesheet" href="assets/pure-css/pure-min.css" />
+    <link rel="stylesheet" href="assets/rainbow/themes/css/blackboard.css" />
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+</head>
+<body>
+
+
+<div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+        <a class="pure-menu-heading" href="" th:text="${menu_title}" />
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
+            <li class="pure-menu-item"><a href="https://github.com/belgattitude/pjb-starter-springboot/" class="pure-menu-link">pjb-starter-springboot</a></li>
+            <li class="pure-menu-item"><a href="https://github.com/belgattitude/php-java-bridge/" class="pure-menu-link">php-java-bridge</a></li>
+            <li class="pure-menu-item"><a href="https://github.com/belgattitude/soluble-japha/" class="pure-menu-link">soluble-japha</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="splash-container">
+    <div class="splash">
+        <h1 class="splash-head" th:text="${headline}" />
+        <p class="splash-subhead">
+            The php java bridge is listening for connections.
+        </p>
+
+        <p>
+            <a href="#get_started" class="pure-button pure-button-primary">Get Started</a>
+        </p>
+
+    </div>
+</div>
+
+<div class="content-wrapper">
+    <div class="content">
+
+        <h2 class="content-head is-center" id="get_started">Getting started.</h2>
+
+        <div class="pure-g" id="get_started">
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+
+                <h3 class="content-subhead" >
+                    <i class="fa fa-rocket"></i>
+                    Connect from PHP
+                </h3>
+                <p>
+                    Install the <a href="https://github.com/belgattitude/soluble-japha/">soluble-japha</a> client in your PHP project and get started !!!
+                </p>
+                <pre>
+                <code data-language="php">&lt;?php
+
+use Soluble\Japha\Bridge\Adapter as BridgeAdapter;
+
+$ba = new BridgeAdapter([
+    'driver' => 'Pjb62',
+    'servlet_address' => 'localhost:8089/servlet.phpjavabridge'
+]);
+
+$system = $ba->javaClass('java.lang.System');
+echo $system->getProperties()->get('java.vm_name'); // And voilà !!!</code>
+
+            </pre>
+
+            </div>
+
+
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                <h3 class="content-subhead">
+                    <i class="fa fa-th-large"></i>
+                    Server settings
+                </h3>
+                <p>
+                    TODO
+                </p>
+            </div>
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                <h3 class="content-subhead">
+                    <i class="fa fa-check-square-o"></i>
+                    Monitor
+                </h3>
+                <p>
+                    Check the <a href="./ping.json" target="_blank">ping endpoint</a>.
+                </p>
+            </div>
+
+            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                <h3 class="content-subhead">
+                    <i class="fa fa-info-circle"></i>
+                    Documentation
+                </h3>
+                <p>
+                    See the <a href="https://github.com/belgattitude/php-java-bridge" target="_blank">php-java-bridge</a> and
+                    <a href="https://github.com/belgattitude/soluble-japha" target="_blank">soluble-japha</a> projects.
+
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="footer l-box is-center">
+        Admin page generated from the <a href="https://github.com/belgattitude/pjb-started-gradle">pjb-starter-springboot</a> bridge template.
+    </div>
+</div>
+
+<script src="assets/rainbow/rainbow.min.js"></script>
+<script src="assets/rainbow/src/language/generic.js"></script>
+<script src="assets/rainbow/src/language/php.js"></script>
+
+</body>
+</html>

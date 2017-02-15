@@ -1,0 +1,17 @@
+### This is the main way to configure the application (other than annotations).
+
+# See https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# for full list of possible properties
+
+## Embedded server config (ignored if deploying on tomcat)
+server:
+   port: 8090 # Default port on which the tomcat embedded server listens
+   display-name: pjb-starter-springboot
+   contextPath: /
+   compression:
+      enabled: true
+
+
+#info:
+#  version: 1.0
+

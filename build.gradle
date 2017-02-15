@@ -1,0 +1,162 @@
+println """\
+Welcome to Gradle $gradle.gradleVersion - http://www.gradle.org
+Gradle home is set to: $gradle.gradleHomeDir
+Gradle user directory is set to: $gradle.gradleUserHomeDir
+Base directory: $projectDir
+Running script ${relativePath(buildFile)}
+"""
+
+group 'io.soluble.pssb'
+version '1.0.0-SNAPSHOT'        // Customize: set the version of the .war
+def java_lang_version = '1.8'   // set 1.7 if you like
+
+ext {
+
+    pjb_version = '6.2.11-rc-2'
+
+    // Customize, set the name of the jar and war file
+    // or send them through command line, i.e. `gradle -Pjar_name=JavaBridgeStandalone`
+    war_name = project.hasProperty('war_name') ? project.getProperty('war_name') : 'JavaBridgeTemplate'
+    jar_name = project.hasProperty('jar_name') ? project.getProperty('jar_name') : 'JavaBridgeStandalone'
+}
+
+buildscript {
+    ext {
+        ext.spring_boot_version = '1.5.1.RELEASE'
+        //ext.spring_boot_version = '1.4.3.RELEASE' // Set the release of spring boot
+        //ext.kotlin_version = '1.0.0' // Required for Kotlin integration
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath(
+              //  "de.undercouch:gradle-download-task:3.1.2", // To download JavaBridge from github
+                "org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}"
+
+                //"org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}" // Required for Kotlin integration
+        )
+    }
+}
+
+repositories {
+    mavenCentral()
+    //mavenLocal()
+}
+
+apply plugin: "java"
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: "war"
+//apply plugin: "de.undercouch.download"
+apply plugin: "org.springframework.boot"
+
+// For Java 8
+sourceCompatibility = java_lang_version
+targetCompatibility = java_lang_version
+
+configurations {
+    // If needed remove exclusions
+    all*.exclude group: 'com.fasterxml.jackson.core', module: '*'
+    //all*.exclude group: 'org.codehaus.groovy', module: 'groovy'
+    all*.exclude group: 'org.hibernate', module: 'hibernate-validator'
+}
+
+dependencies {
+    // Spring-boot stuffs
+    providedRuntime "org.springframework.boot:spring-boot-starter-tomcat:${spring_boot_version}"
+    testCompile "org.springframework.boot:spring-boot-starter-test:${spring_boot_version}"
+    compile "org.springframework.boot:spring-boot-starter-web:${spring_boot_version}"
+    compile ("org.springframework.boot:spring-boot-starter-thymeleaf:${spring_boot_version}") {
+        exclude group: 'org.codehaus.groovy', module: 'groovy'
+    }
+    compile "org.springframework.boot:spring-boot-devtools:${spring_boot_version}"  // Useful for dev (auto disabled on prod)
+    compile "com.google.code.gson:gson:2.8.0"  // Deps for the ping address
+
+    // PHPJavaBridge
+    compile("io.soluble.pjb:php-java-bridge:${pjb_version}") {
+        // In sprint-boot, you can exclude javax.servlet and log4j
+        exclude group: 'javax.servlet', module: 'javax.servlet-api'
+    }
+
+    /** #######################################################
+     *  Here you can add runtime dependencies to the project
+     *  -------------------------------------------------------
+     *  Those dependencies will be included available in the
+     *  builded war file. Alternatively you may register deps
+     *  through the 'init-script' method.
+     *  (check 'init-scripts/README.md' folder for insights)
+     *  #######################################################
+     */
+
+    // example: mysql jdbc connector
+    /*runtime "mysql:mysql-connector-java:6.+"*/
+
+    // example: jasper reports
+    /*
+    runtime ('net.sf.jasperreports:jasperreports:6.+') {
+        exclude group: 'com.lowagie' // better to use latest com.itextpdf instead
+        exclude group: 'org.olap4j' // Generally don't need this
+    }
+    */
+    
+    // example: itextpdf (required for jasperreports)
+    /* runtime 'com.itextpdf:itextpdf:5.5.+' */
+    /* runtime 'com.itextpdf:itext-pdfa:5.5.+' */
+}
+
+
+war {
+    baseName = "${war_name}"
+    version = null
+    // optional
+    //from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+bootRun {
+    addResources = true
+
+    // This sends all system properties to spring boot
+    // allowing to override application.yml settings//
+    // i.e. -> gradle bootRun -Dserver.port=8092
+    systemProperties = System.properties
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
+}
+
+task printProperties {
+    doLast {
+        println phpJavaBridgeVersion
+    }
+}
+
+task "forceTest" {
+    dependsOn "cleanTest", "test"
+}
+
+task "fullBuild" {
+    dependsOn "cleanTest", "test", "check", "build"
+}
+
+
+jar {
+    baseName = "${jar_name}"
+    version = null
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'io.soluble.pjbstarter.Application'
+        )
+    }
+}
+
+// Always repackage jar with the embedded tomcat
+bootRepackage {
+    withJarTask jar
+}
+
+defaultTasks 'war'
+
