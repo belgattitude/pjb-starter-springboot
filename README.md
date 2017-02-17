@@ -4,7 +4,7 @@
 Easy starter to package a [PHPJavaBridge](https://github.com/belgattitude/php-java-bridge) server 
 with custom dependencies in minutes.    
 
-![](./docs/images/browser-home.png "Homepage screenshot")
+![](./docs/images/browser-home.png "Landing page screenshot")
 
 > While both the recent [PHPJavaBridge server](https://github.com/belgattitude/php-java-bridge) fork and 
 > this starter can be easily customized (in pretty much the same way), the latter features a 
@@ -34,9 +34,9 @@ with custom dependencies in minutes.
 
 ## Quick start
 
-Packaging and deploying a customized PHPJavaBridge server could be done in 4 steps:
+Packaging and deploying a customized PHPJavaBridge server could be done in 3 steps:
     
-1. Clone the project
+1. Clone the project *(or download and unzip the [release](https://github.com/belgattitude/pjb-starter-springboot/releases) archive)*
 
    ```shell
    $ git clone https://github.com/belgattitude/pjb-starter-springboot
@@ -289,19 +289,9 @@ The `pjb-starter-springboot` includes a very basic [PingController]((https://git
          */
     
         // example: mysql jdbc connector
+    
         /*runtime "mysql:mysql-connector-java:6.+"*/
     
-        // example: jasper reports
-        /*
-        runtime ('net.sf.jasperreports:jasperreports:6.+') {
-            exclude group: 'com.lowagie' // better to use latest com.itextpdf instead
-            exclude group: 'org.olap4j' // Generally don't need this
-        }
-        */
-        
-        // example: itextpdf (required for jasperreports)
-        /* runtime 'com.itextpdf:itextpdf:5.5.+' */
-        /* runtime 'com.itextpdf:itext-pdfa:5.5.+' */
     }
     ```
     

@@ -29,6 +29,7 @@ Here's a list of some example libraries ready to use when you `./gradlew`
 
 | Type       | File | Description | 
 |------------| ---- | ---------|
+| Common     | [./init.guava.gradle](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/init.guava.gradle) | [Guava](https://github.com/google/guava) Google core libraries for Java | 
 | PDF        | [./init.itext.gradle](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/init.itext.gradle) | [IText](http://itextpdf.com/) low level library to generate PDF |
 | PDF        | [./init.pdfbox.gradle](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/init.pdfbox.gradle) | [PDFBox](http://pdfbox.apache.org/) Java tool for working with PDF documents. |
 | DOC/XLS    | [./init.poi.gradle](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/init.poi.gradle) | [Apache POI](https://poi.apache.org/) Java API for Microsoft Documents. |
@@ -38,8 +39,16 @@ Here's a list of some example libraries ready to use when you `./gradlew`
 | JDBC       | [./init.mysql.gradle](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/init.mysql.gradle) | [MySQL JDBC connector](http://dev.mysql.com) |
 | JDBC       | [./init.mariadb.gradle](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/init.mariadb.gradle) | [MariaDB JDBC connector](http://mariadb.org) |
 | JDBC       | [./init.postgresql.gradle](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/init.postgresql.gradle) | [PostgreSQL JDBC connector](https://jdbc.postgresql.org/) |
-| NLP        | [./init.opennlp.gradle](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/init.opennlp.gradle) | [OpenNLP](https://opennlp.apache.org/) natural language processing |
+| NLP        | [./init.opennlp.gradle](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/init.opennlp.gradle) | [Apache OpenNLP](https://opennlp.apache.org/) natural language processing |
 | NLP        | [./init.corenlp.gradle](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/init.corenlp.gradle) | [Standford CoreNLP](http://stanfordnlp.github.io/CoreNLP) - POSTagger, NER, ... |
+
+
+#### CoreNLP Training 
+
+Languages specific models to train languages with Standford CoreNLP
+
+| Type       | File | Description | 
+|------------| ---- | ---------|
 | NLP        | [./init.corenlp-models.gradle](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/init.corenlp-models.gradle) | [Standford CoreNLP](http://stanfordnlp.github.io/CoreNLP) Trained core models - 400Mb |
 | NLPModel   | [./init.corenlp-models-english.gradle](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/init.corenlp-models-english.gradle) | [Standford CoreNLP](http://stanfordnlp.github.io/CoreNLP) Trained models for English - 900Mb + 500M (KBP) |
 | NLPModel   | [./init.corenlp-models-german.gradle](https://github.com/belgattitude/pjb-starter-springboot/blob/master/init-scripts/init.corenlp-models-german.gradle) | [Standford CoreNLP](http://stanfordnlp.github.io/CoreNLP) Trained models for German - 130Mb |

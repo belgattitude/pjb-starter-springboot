@@ -12,7 +12,7 @@ def java_lang_version = '1.8'   // set 1.7 if you like
 
 ext {
 
-    pjb_version = '6.2.11-rc-2'
+    pjb_version = '6.2.11'
 
     // Customize, set the name of the jar and war file
     // or send them through command line, i.e. `gradle -Pjar_name=JavaBridgeStandalone`
@@ -90,19 +90,9 @@ dependencies {
      */
 
     // example: mysql jdbc connector
+
     /*runtime "mysql:mysql-connector-java:6.+"*/
 
-    // example: jasper reports
-    /*
-    runtime ('net.sf.jasperreports:jasperreports:6.+') {
-        exclude group: 'com.lowagie' // better to use latest com.itextpdf instead
-        exclude group: 'org.olap4j' // Generally don't need this
-    }
-    */
-    
-    // example: itextpdf (required for jasperreports)
-    /* runtime 'com.itextpdf:itextpdf:5.5.+' */
-    /* runtime 'com.itextpdf:itext-pdfa:5.5.+' */
 }
 
 

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## 1.0.0 (2017-02-18) 
+
+### Changed
+
+  - Updated deps to `io.soluble.pjb:php-java-bridge:6.2.11`
+  - Increment to v1.0.0
 
 ## 0.4.0 (2017-02-15) 
 
