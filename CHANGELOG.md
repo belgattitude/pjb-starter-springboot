@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added 
 
-  - Spring boot actuator
+  - Spring boot actuator (useful functions for monitoring on administrative port)
   
 ### Updated
 
