@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## 1.1.0 (2017-03-08) 
+
+### Changed
+
+  - Exclusions of jackson xml and groovy (build size increase)
+
+### Added 
+
+  - Spring boot actuator
+  
+### Updated
+
+  - Spring boot 1.5.2
+  - Provided gradle version updated to 3.4.1
+  - Updated PHPJavabridge server to 7.0.0
+
+### Removed
+
+  - Java.inc deprecated client (committed by mistake)
+
 ## 1.0.0 (2017-02-18) 
 
 ### Changed

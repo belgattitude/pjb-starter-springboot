@@ -23,6 +23,7 @@ public class Application extends SpringBootServletInitializer implements WebAppl
 
 
     public static void main(String[] args) {
+
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
         //configureApplication(new SpringApplicationBuilder()).run(args);
         /*

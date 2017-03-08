@@ -12,7 +12,7 @@ def java_lang_version = '1.8'   // set 1.7 if you like
 
 ext {
 
-    pjb_version = '6.2.11'
+    pjb_version = '7.0.0'
 
     // Customize, set the name of the jar and war file
     // or send them through command line, i.e. `gradle -Pjar_name=JavaBridgeStandalone`
@@ -22,8 +22,7 @@ ext {
 
 buildscript {
     ext {
-        ext.spring_boot_version = '1.5.1.RELEASE'
-        //ext.spring_boot_version = '1.4.3.RELEASE' // Set the release of spring boot
+        ext.spring_boot_version = '1.5.2.RELEASE'
         //ext.kotlin_version = '1.0.0' // Required for Kotlin integration
     }
     repositories {
@@ -56,19 +55,20 @@ sourceCompatibility = java_lang_version
 targetCompatibility = java_lang_version
 
 configurations {
-    // If needed remove exclusions
-    all*.exclude group: 'com.fasterxml.jackson.core', module: '*'
+    // If needed add some exclusions to reduce size
     //all*.exclude group: 'org.codehaus.groovy', module: 'groovy'
-    all*.exclude group: 'org.hibernate', module: 'hibernate-validator'
+    //all*.exclude group: 'org.hibernate', module: 'hibernate-validator'
 }
 
 dependencies {
     // Spring-boot stuffs
     providedRuntime "org.springframework.boot:spring-boot-starter-tomcat:${spring_boot_version}"
+    //providedRuntime "org.springframework.boot:spring-boot-starter-undertow:${spring_boot_version}"
     testCompile "org.springframework.boot:spring-boot-starter-test:${spring_boot_version}"
     compile "org.springframework.boot:spring-boot-starter-web:${spring_boot_version}"
+    compile("org.springframework.boot:spring-boot-starter-actuator:${spring_boot_version}")
     compile ("org.springframework.boot:spring-boot-starter-thymeleaf:${spring_boot_version}") {
-        exclude group: 'org.codehaus.groovy', module: 'groovy'
+       // exclude group: 'org.codehaus.groovy', module: 'groovy'
     }
     compile "org.springframework.boot:spring-boot-devtools:${spring_boot_version}"  // Useful for dev (auto disabled on prod)
     compile "com.google.code.gson:gson:2.8.0"  // Deps for the ping address
@@ -112,9 +112,18 @@ bootRun {
     systemProperties = System.properties
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '3.3'
+
+configure(rootProject) {
+
+    task wrapper(type: Wrapper) {
+        description = 'Generates gradlew and gradlew.bat scripts'
+        gradleVersion = '3.4.1'
+        //jarFile = "${project.projectDir}/.infra/gradle/gradle-wrapper.jar"
+    }
+
 }
+
+
 
 task printProperties {
     doLast {

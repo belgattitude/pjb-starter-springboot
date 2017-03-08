@@ -11,6 +11,10 @@ server:
    compression:
       enabled: true
 
+management:
+  port: 8091
+  address: 127.0.0.1  # bind to localhost
+
 
 #info:
 #  version: 1.0
