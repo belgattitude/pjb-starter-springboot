@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Changed
 
-  - Exclusions of jackson xml and groovy (build size increase)
+  - Removed exclusions of jackson xml and groovy (build size increase)
 
 ### Added 
 
