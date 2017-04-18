@@ -117,8 +117,8 @@ configure(rootProject) {
 
     task wrapper(type: Wrapper) {
         description = 'Generates gradlew and gradlew.bat scripts'
-        gradleVersion = '3.5.0'
-        //jarFile = "${project.projectDir}/.infra/gradle/gradle-wrapper.jar"
+        gradleVersion = '3.5'
+        jarFile = "${project.projectDir}/gradle/wrapper/gradle-wrapper.jar"
     }
 
 }
