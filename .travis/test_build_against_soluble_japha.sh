@@ -27,6 +27,16 @@ STANDALONE_JAR="$PROJECT_DIR/build/libs/JavaBridgeStandalone.jar"
 VAR_DIR="$SCRIPT_DIR/var" # Where to store log and pid files
 SERVER_PIDFILE="$VAR_DIR/standalone.pid"
 
+
+clean_soluble_japha() {
+
+    # 1. Clone the soluble-japha project (if not already exists)
+    if [ -d $JAPHA_DIR ]; then
+        echo "[*] Clean soluble-japha";
+        rm -rf $JAPHA_DIR
+    fi
+}
+
 install_soluble_japha() {
 
     echo "[*] Installing latest release of soluble-japha";
@@ -40,12 +50,16 @@ install_soluble_japha() {
     cd $JAPHA_DIR
 
     # 3. Checkout latest release
-    git fetch --tags
-    latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
-    git checkout $latestTag
+    #git fetch --tags
+    #latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+    #git checkout $latestTag
+
+    # Travis does not support php 7.1 for java image
+    # so let's get the lates php5.6 release to test
+    git checkout tags/1.4.5 -b travis_test
 
     # 4. Run composer install
-    composer install
+    composer update
 
     # 5. Restore path
     cd $PROJECT_DIR
@@ -127,6 +141,7 @@ runPHPUnit()  {
 
 # Here's the steps
 
+clean_soluble_japha;
 install_soluble_japha;
 runStandaloneInBackground;
 runPHPUnit;
