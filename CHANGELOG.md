@@ -11,7 +11,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
   - Spring boot updated to 1.5.6
   - PHPJavaBridge updated to 7.1.3
   - Gradle wrapper updated to 4.1
-  - Updated recipes for jasper reports integration  
+  - Updated recipes for jasper reports integration
+
+### Removed
+    
+  - By default actuator is now disabled. Add in build.gradle if needed.  
 
 ## 1.1.0 (2017-03-08) 
 

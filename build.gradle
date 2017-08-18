@@ -66,7 +66,7 @@ dependencies {
     //providedRuntime "org.springframework.boot:spring-boot-starter-undertow:${spring_boot_version}"
     testCompile "org.springframework.boot:spring-boot-starter-test:${spring_boot_version}"
     compile "org.springframework.boot:spring-boot-starter-web:${spring_boot_version}"
-    compile("org.springframework.boot:spring-boot-starter-actuator:${spring_boot_version}")
+    //compile("org.springframework.boot:spring-boot-starter-actuator:${spring_boot_version}")
     compile ("org.springframework.boot:spring-boot-starter-thymeleaf:${spring_boot_version}") {
        // exclude group: 'org.codehaus.groovy', module: 'groovy'
     }
