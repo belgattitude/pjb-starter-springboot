@@ -4,11 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## 1.2.0 TBD
+## 1.2.0 (2017-08-18)
 
 ### Updated
 
-  - Gradle wrapper updated to 3.5.0
+  - Spring boot updated to 1.5.6
+  - PHPJavaBridge updated to 7.1.3
+  - Gradle wrapper updated to 4.1
+  - Updated recipes for jasper reports integration
 
 ## 1.1.0 (2017-03-08) 
 
