@@ -4,10 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## 1.x.x (Not released)
+## 2.0.0 (2018-08-18)
 
 ### Updated 
 
+- Updated to **springboot 2.0**
 - [dev] Gradle to 4.10
 
 ### Fixed

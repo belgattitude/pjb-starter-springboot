@@ -22,8 +22,8 @@ ext {
 
 buildscript {
     ext {
-        ext.spring_boot_version = '1.5.6.RELEASE'
-        //ext.spring_boot_version = '2.0.4.RELEASE'
+        //ext.spring_boot_version = '1.5.6.RELEASE'
+        ext.spring_boot_version = '2.0.4.RELEASE'
         //ext.kotlin_version = '1.0.0' // Required for Kotlin integration
     }
     repositories {
@@ -105,8 +105,8 @@ war {
 }
 
 bootRun {
-    addResources = true
-
+    //addResources = true
+    sourceResources sourceSets.main
     // This sends all system properties to spring boot
     // allowing to override application.yml settings//
     // i.e. -> gradle bootRun -Dserver.port=8092
@@ -153,8 +153,8 @@ jar {
 }
 
 // Always repackage jar with the embedded tomcat
-bootRepackage {
-    withJarTask jar
+bootJar {
+    //withJarTask jar
 }
 
 defaultTasks 'war', 'jar', 'bootRepackage'
