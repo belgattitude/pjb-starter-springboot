@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## 1.x.x (Not released)
+
+### Updated 
+
+- [dev] Gradle to 4.10
+
+### Fixed
+
+- Example init-scripts/init.jasperreports.gradle missing dep fixed
+
+
 ## 1.2.0 (2017-08-18)
 
 ### Updated
