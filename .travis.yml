@@ -18,6 +18,7 @@ before_install:
 
 script:
   - ./gradlew test
+  - ./gradlew bootJar
   - ./.travis/test_build_against_soluble_japha.sh
 
 

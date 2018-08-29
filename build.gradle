@@ -98,6 +98,7 @@ dependencies {
 
 
 war {
+    enabled = true
     baseName = "${war_name}"
     version = null
     // optional
@@ -112,7 +113,6 @@ bootRun {
     // i.e. -> gradle bootRun -Dserver.port=8092
     systemProperties = System.properties
 }
-
 
 configure(rootProject) {
 
@@ -141,6 +141,7 @@ task "fullBuild" {
 }
 
 jar {
+    //enabled = true
     baseName = "${jar_name}"
     version = null
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
@@ -154,8 +155,12 @@ jar {
 
 // Always repackage jar with the embedded tomcat
 bootJar {
+    //classifier = 'boot'
+    baseName = "${jar_name}"
+    version = null
+
     //withJarTask jar
 }
 
-defaultTasks 'war', 'jar', 'bootRepackage'
+defaultTasks 'war', 'jar', 'bootJar'
 
