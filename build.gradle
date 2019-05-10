@@ -141,7 +141,7 @@ task "fullBuild" {
 }
 
 jar {
-    //enabled = true
+    enabled = true
     baseName = "${jar_name}"
     version = null
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
